@@ -1,0 +1,1 @@
+INSERT INTO `car` (`id`, `created_car_date`, `day_price`, `image_url`, `model`, `serie`, `updated_car_date`) VALUES (NULL, '2022-11-30', '50', 'assets/images/cars/golf.png', 'Golf 7', '000 tun 0000', NULL);
