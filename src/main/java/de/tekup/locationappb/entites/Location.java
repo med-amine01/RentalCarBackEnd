@@ -1,6 +1,8 @@
 package de.tekup.locationappb.entites;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,20 +16,35 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private LocalDate dateDebut;
+    @Column
+    private LocalDate StartDate;
 
-    private LocalDate dateRetour;
+    @Column
+    private LocalDate EndDate;
 
-    private double prixJour;
     @Transient
-    private double prix;
+    private double price;
+
+    @Column
+    @CreationTimestamp
+    private LocalDate createdLocationDate;
+
+    @Column
+    @UpdateTimestamp
+    private LocalDate updatedLocationDate;
+
     @ManyToOne
     private Client client;
+
     @ManyToOne
-    private Voiture voiture;
+    private Car car;
+
+
+
+
     @PostLoad
-    private void calculatePrix(){
-        long nbJour = ChronoUnit.DAYS.between(dateDebut,dateRetour)+1;
-        prix = prixJour * nbJour;
+    private void calculatePrice(){
+        long nbDays = ChronoUnit.DAYS.between(StartDate,EndDate)+1;
+        price = car.getDayPrice() * nbDays;
     }
 }

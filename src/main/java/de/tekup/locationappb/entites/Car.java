@@ -1,7 +1,6 @@
 package de.tekup.locationappb.entites;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,47 +8,38 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
-@JsonIdentityInfo(property = "cin",generator = ObjectIdGenerators.PropertyGenerator.class)
-public class Client {
+@JsonIdentityInfo(property = "model",generator = ObjectIdGenerators.PropertyGenerator.class)
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
-    private String cin;
+    private String serie;
 
     @Column
-    private String firstName;
+    private String model;
 
     @Column
-    private String lastName;
+    private double dayPrice;
 
     @Column
-    private String email;
-
-    @Column
-    private String phoneNumber;
-
-    @Column
-    private String Address;
+    private String imageUrl;
 
     @Column
     @CreationTimestamp
-    private LocalDate createdClientDate;
+    private LocalDate createdCarDate;
 
     @Column
     @UpdateTimestamp
-    private LocalDate updatedClientDate;
+    private LocalDate updatedCarDate;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "car")
     private List<Location> locations;
 }

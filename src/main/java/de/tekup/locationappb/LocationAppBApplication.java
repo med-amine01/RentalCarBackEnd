@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LocationAppBApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(LocationAppBApplication.class, args);
 	}
 
