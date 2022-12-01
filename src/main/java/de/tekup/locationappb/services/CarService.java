@@ -29,8 +29,8 @@ public class CarService {
                 .orElseThrow(()-> new IllegalArgumentException("Car ID not Found"));
     }
 
-    public List<Car> getCarByModel(String model){
-        return carRepository.findByModelContaining(model);
+    public List<Car> getCarByBrand(String brand){
+        return carRepository.findByBrandContaining(brand);
     }
 
 

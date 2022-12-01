@@ -17,6 +17,12 @@ public class CarController {
 
     private CarService carService;
 
+
+    @PostMapping("/addcar")
+    public Car addNewCar(@RequestBody Car car){
+        return  carService.addCar(car);
+    }
+
     @GetMapping("/allcars")
     public List<Car> getAllCars(){
         return carService.getAllCars();
@@ -27,8 +33,8 @@ public class CarController {
         return carService.getCarById(carId);
     }
 
-    public List<Car> getCarByModel(@RequestParam("model") String model){
-        return carService.getCarByModel(model);
+    public List<Car> getCarByModel(@RequestParam("brand") String brand){
+        return carService.getCarByBrand(brand);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

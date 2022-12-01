@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -21,10 +22,19 @@ public class Car {
     private int id;
 
     @Column
-    private String serie;
+    private String brand;
 
     @Column
     private String model;
+
+    @Column
+    private String serie;
+
+    @Column
+    private String fuelType;
+
+    @Column
+    private String gearType;
 
     @Column
     private double dayPrice;
@@ -34,11 +44,11 @@ public class Car {
 
     @Column
     @CreationTimestamp
-    private LocalDate createdCarDate;
+    private LocalDateTime createdAt;
 
     @Column
     @UpdateTimestamp
-    private LocalDate updatedCarDate;
+    private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "car")
     private List<Location> locations;
