@@ -4,17 +4,28 @@ package de.tekup.locationappb.services;
 import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.repositories.CarRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class CarService {
     private CarRepository carRepository;
+
+    public Car updateCar(Car car){
+        Car car1 = carRepository.findById(car.getId()).get();
+
+        car1.setBrand(car.getBrand());
+        car1.setModel(car.getModel());
+        car1.setSerie(car.getSerie());
+        car1.setFuelType(car.getFuelType());
+        car1.setGearType(car.getGearType());
+        car1.setDayPrice(car.getDayPrice());
+        car1.setImageUrl(car.getImageUrl());
+
+        return carRepository.save(car1);
+    }
 
     public Car addCar(Car car){
         return carRepository.save(car);

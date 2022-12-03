@@ -4,7 +4,6 @@ package de.tekup.locationappb.controllers;
 import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.services.CarService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +16,10 @@ public class CarController {
 
     private CarService carService;
 
+    @PatchMapping("/updatecar")
+    public Car updateCar(@RequestBody Car car){
+        return carService.updateCar(car);
+    }
 
     @PostMapping("/addcar")
     public Car addNewCar(@RequestBody Car car){
