@@ -16,6 +16,16 @@ public class CarController {
 
     private CarService carService;
 
+    @DeleteMapping("/deletecar/{id}")
+    public boolean deleteCar(@PathVariable int id){
+        Car car = carService.getCarById(id);
+        if(car != null){
+            carService.deleteCar(car.getId());
+            return true;
+        }
+        return false;
+    }
+
     @PatchMapping("/updatecar")
     public Car updateCar(@RequestBody Car car){
         return carService.updateCar(car);

@@ -13,8 +13,13 @@ import java.util.List;
 public class CarService {
     private CarRepository carRepository;
 
+    public void deleteCar(int id){
+        Car car = getCarById(id);
+        carRepository.delete(car);
+    }
+
     public Car updateCar(Car car){
-        Car car1 = carRepository.findById(car.getId()).get();
+        Car car1 = getCarById(car.getId());
 
         car1.setBrand(car.getBrand());
         car1.setModel(car.getModel());
