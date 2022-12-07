@@ -41,9 +41,9 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping("/id")
-    public Car getCarById(@RequestParam("id") int carId){
-        return carService.getCarById(carId);
+    @GetMapping("/{id}")
+    public Car getCarById(@PathVariable("id") int id){
+        return carService.getCarById(id);
     }
 
     public List<Car> getCarByModel(@RequestParam("brand") String brand){

@@ -10,5 +10,6 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public interface CarRepository extends JpaRepository<Car,Integer> {
 
-    List<Car> findByBrandContaining(String brand);
+    // http://localhost:8080/api/cars/search/findByBrandContaining?brand='name of brand'
+    List<Car> findByBrandContaining(String brand); //containing =  like %'k'%
 }

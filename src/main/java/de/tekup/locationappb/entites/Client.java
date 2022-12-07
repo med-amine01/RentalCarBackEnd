@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -37,18 +38,21 @@ public class Client {
     private String email;
 
     @Column
+    private String password;
+
+    @Column
     private String phoneNumber;
 
     @Column
-    private String Address;
+    private LocalDate licenceDrive;
 
     @Column
     @CreationTimestamp
-    private LocalDate createdClientDate;
+    private LocalDateTime createdClientDate;
 
     @Column
     @UpdateTimestamp
-    private LocalDate updatedClientDate;
+    private LocalDateTime updatedClientDate;
 
     @OneToMany(mappedBy = "client")
     private List<Location> locations;

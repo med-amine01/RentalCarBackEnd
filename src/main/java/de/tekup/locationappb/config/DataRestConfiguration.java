@@ -1,6 +1,7 @@
 package de.tekup.locationappb.config;
 
 import de.tekup.locationappb.entites.Car;
+import de.tekup.locationappb.entites.Client;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -19,5 +20,6 @@ public class DataRestConfiguration implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(Car.class);
+        config.exposeIdsFor(Client.class);
     }
 }
