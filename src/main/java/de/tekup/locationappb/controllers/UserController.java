@@ -6,6 +6,7 @@ import de.tekup.locationappb.repositories.RoleRepository;
 import de.tekup.locationappb.repositories.UserRepository;
 import de.tekup.locationappb.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class UserController {
         return userService.userRegister(user);
     }
     @GetMapping("/foradmin")
+    @PreAuthorize("hasRole('Admin')")
 @ResponseBody
     public String forAdmin(){
         System.out.println("wselet");
@@ -32,6 +34,8 @@ public class UserController {
     }
     @GetMapping("/foruser")
 @ResponseBody
+    @PreAuthorize("hasRole('User')")
+
     public String forUser(){
         return "this is for user";
     }
