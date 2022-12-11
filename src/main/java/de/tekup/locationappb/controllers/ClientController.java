@@ -15,7 +15,6 @@ import java.util.List;
 public class ClientController {
 
     private ClientService clientService;
-    private final CarRepository carRepository;
 
     @DeleteMapping("/deleteclient/{id}")
     public boolean deleteClient(@PathVariable int id){

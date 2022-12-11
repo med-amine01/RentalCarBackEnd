@@ -26,9 +26,7 @@ public class ClientService {
         client1.setFirstName(client.getFirstName());
         client1.setLastName(client.getLastName());
         client1.setEmail(client.getEmail());
-        client1.setPassword(client.getPassword());
         client1.setPhoneNumber(client.getPhoneNumber());
-        client1.setLicenceDrive(client.getLicenceDrive());
 
         return clientRepository.save(client1);
     }

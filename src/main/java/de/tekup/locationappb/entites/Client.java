@@ -37,14 +37,10 @@ public class Client {
     @Column
     private String email;
 
-    @Column
-    private String password;
 
     @Column
     private String phoneNumber;
 
-    @Column
-    private LocalDate licenceDrive;
 
     @Column
     @CreationTimestamp
