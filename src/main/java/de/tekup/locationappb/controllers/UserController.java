@@ -25,17 +25,18 @@ public class UserController {
     public User registerNewUser(@RequestBody User user){
         return userService.userRegister(user);
     }
+
     @GetMapping("/foradmin")
     @PreAuthorize("hasRole('Admin')")
-@ResponseBody
+    @ResponseBody
     public String forAdmin(){
         System.out.println("wselet");
         return "this is for admin";
     }
-    @GetMapping("/foruser")
-@ResponseBody
-    @PreAuthorize("hasRole('User')")
 
+    @GetMapping("/foruser")
+    @ResponseBody
+    @PreAuthorize("hasRole('User')")
     public String forUser(){
         return "this is for user";
     }

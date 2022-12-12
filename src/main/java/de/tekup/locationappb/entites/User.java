@@ -1,7 +1,13 @@
 package de.tekup.locationappb.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Entity
 public class User {
@@ -10,6 +16,19 @@ public class User {
     private String userFirstName;
     private String userLastName;
     private String userPassword;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime createdUserDate;
+
+    @Column
+    @UpdateTimestamp
+    private LocalDateTime updatedUserDate;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Location> locations;
+
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",joinColumns = {@JoinColumn(name = "USER_ID")},inverseJoinColumns = {
             @JoinColumn(name = "ROLE_ID")

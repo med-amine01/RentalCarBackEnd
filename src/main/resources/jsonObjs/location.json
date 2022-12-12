@@ -1,5 +1,12 @@
 {
-  "dateDebut":"2022-10-10",
-  "dateRetour":"2022-10-20",
-  "prixJour":80
+  "startDate":"2022-12-07",
+  "endDate":"2022-12-11",
+
+  "client":{
+    "email":"azer@gmail.com"
+  },
+
+  "car":{
+    "id" : "1"
+  }
 }

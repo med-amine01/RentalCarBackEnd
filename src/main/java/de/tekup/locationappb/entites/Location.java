@@ -17,12 +17,12 @@ public class Location {
     private long id;
 
     @Column
-    private LocalDate StartDate;
+    private LocalDate startDate;
 
     @Column
-    private LocalDate EndDate;
+    private LocalDate endDate;
 
-    @Transient
+    @Column
     private double price;
 
     @Column
@@ -34,17 +34,16 @@ public class Location {
     private LocalDate updatedLocationDate;
 
     @ManyToOne
-    private Client client;
+    private User user;
 
     @ManyToOne
     private Car car;
 
 
 
-
-    @PostLoad
-    private void calculatePrice(){
-        long nbDays = ChronoUnit.DAYS.between(StartDate,EndDate)+1;
-        price = car.getDayPrice() * nbDays;
-    }
+//    @PostLoad
+//    private void calculatePrice(){
+//        long nbDays = ChronoUnit.DAYS.between(startDate,endDate)+1;
+//        price = car.getDayPrice() * nbDays;
+//    }
 }

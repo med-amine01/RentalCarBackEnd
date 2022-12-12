@@ -1,6 +1,7 @@
 {
-  "cin": "12345678",
-  "nom": " Doe",
-  "prenom" : "Jon",
-  "adresse": "Tunis, Tunisie"
+  "cin":"1234567",
+  "firstName":"ahmed",
+  "lastName":"test",
+  "email":"ahmed@gmail.com",
+  "phoneNumber":"12345678"
 }

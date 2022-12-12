@@ -45,12 +45,12 @@ public class CarController {
 
     @GetMapping("/{id}")
     public Car getCarById(@PathVariable("id") int id){
-        try {
-            emailSenderService.sendmail("camine500@gmail.com");
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            emailSenderService.sendmail("camine500@gmail.com");
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
         return carService.getCarById(id);
     }
 

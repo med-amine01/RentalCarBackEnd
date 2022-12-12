@@ -37,7 +37,6 @@ public class Client {
     @Column
     private String email;
 
-
     @Column
     private String phoneNumber;
 
@@ -50,6 +49,7 @@ public class Client {
     @UpdateTimestamp
     private LocalDateTime updatedClientDate;
 
-    @OneToMany(mappedBy = "client")
-    private List<Location> locations;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "client")
+//    private List<Location> locations;
 }
