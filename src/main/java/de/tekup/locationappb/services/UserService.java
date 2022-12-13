@@ -52,6 +52,7 @@ public class UserService {
     public User registerNewUser(User user) {
         Role role = roleRepository.findById("User").get();
 
+
         user.getRole().add(role);
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
 

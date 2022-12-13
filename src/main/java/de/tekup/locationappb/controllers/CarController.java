@@ -1,11 +1,14 @@
 package de.tekup.locationappb.controllers;
 
 
+import de.tekup.locationappb.config.FileUploadUtil;
 import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.services.CarService;
 import de.tekup.locationappb.services.EmailSenderService;
 import lombok.AllArgsConstructor;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -33,7 +36,24 @@ public class CarController {
     }
 
     @PostMapping("/addcar")
-    public Car addNewCar(@RequestBody Car car){
+    public int addNewCar(@RequestBody Car car){
+
+        return carService.addCar(car).getId();
+    }
+    @PostMapping("/addcar/img/{id}")
+    public Car addImageToCar(@PathVariable("id") int id,
+            @RequestParam("file") MultipartFile multipartFile){
+        Car car = carService.getCarById(id);
+        System.err.println(multipartFile.getSize());
+        if(!multipartFile.isEmpty()){
+            String orgFileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            String ext = orgFileName.substring(orgFileName.lastIndexOf("."));
+            String uploadDir = "C:/Users/abbes/WebstormProjects/RentalCarProjectAngular/src/assets/images/cars/";
+          String fileName = "voiture-"+car.getId()+ext;
+            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+            car.setImageUrl("/"+uploadDir+fileName);
+
+        }
         return  carService.addCar(car);
     }
 
