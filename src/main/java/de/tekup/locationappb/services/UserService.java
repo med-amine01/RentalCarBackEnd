@@ -19,6 +19,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User userRegister(User user){
+        Role role=roleRepository.findById("User").get();
+        user.getRole().add(role);
         return userRepository.save(user);
 
     }

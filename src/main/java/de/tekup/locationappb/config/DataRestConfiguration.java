@@ -16,9 +16,9 @@ public class DataRestConfiguration implements RepositoryRestConfigurer {
     private EntityManager entityManager;
 
     //we will expose id for car api
-//    @Override
-//    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        config.exposeIdsFor(Car.class);
-//        config.exposeIdsFor(Client.class);
-//    }
+    @Override
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+        config.exposeIdsFor(Car.class);
+
+    }
 }
