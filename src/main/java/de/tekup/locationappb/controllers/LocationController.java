@@ -1,7 +1,5 @@
 package de.tekup.locationappb.controllers;
 
-import de.tekup.locationappb.entites.Car;
-import de.tekup.locationappb.entites.Client;
 import de.tekup.locationappb.entites.Location;
 import de.tekup.locationappb.services.LocationService;
 import lombok.AllArgsConstructor;

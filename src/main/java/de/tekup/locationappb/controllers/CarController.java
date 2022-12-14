@@ -48,7 +48,7 @@ public class CarController {
         if(!multipartFile.isEmpty()){
             String orgFileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             String ext = orgFileName.substring(orgFileName.lastIndexOf("."));
-            String uploadDir = "C:/Users/abbes/WebstormProjects/RentalCarProjectAngular/src/assets/images/cars/";
+            String uploadDir = "C:/Users/camin/Desktop/Angular/rentCarProject/src/assets/images/cars/";
           String fileName = "voiture-"+car.getId()+ext;
             FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
             car.setImageUrl("/"+uploadDir+fileName);

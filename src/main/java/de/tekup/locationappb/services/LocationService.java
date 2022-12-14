@@ -1,11 +1,9 @@
 package de.tekup.locationappb.services;
 
 import de.tekup.locationappb.entites.Car;
-import de.tekup.locationappb.entites.Client;
 import de.tekup.locationappb.entites.Location;
 import de.tekup.locationappb.entites.User;
 import de.tekup.locationappb.repositories.CarRepository;
-import de.tekup.locationappb.repositories.ClientRepository;
 import de.tekup.locationappb.repositories.LocationRepository;
 import de.tekup.locationappb.repositories.UserRepository;
 import lombok.AllArgsConstructor;
