@@ -26,6 +26,8 @@ public class Location {
     private double price;
 
     @Column
+    private String status;
+    @Column
     @CreationTimestamp
     private LocalDate createdLocationDate;
 

@@ -43,7 +43,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers("/authenticate",
                         "/registerNewUser",
-                        "/api/location/addLocation").permitAll()
+                        "/api/location/**").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()

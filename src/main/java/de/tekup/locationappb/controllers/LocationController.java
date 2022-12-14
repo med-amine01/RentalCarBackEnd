@@ -20,6 +20,10 @@ public class LocationController {
         return locationService.addLocation(location);
     }
 
+    @PatchMapping("/updatestatus")
+    public Location statusUpdate(@RequestBody Location location){
+        return locationService.updateSatuts(location);
+    }
 
     @GetMapping("/allLocations")
     public List<Location> getLocations(){

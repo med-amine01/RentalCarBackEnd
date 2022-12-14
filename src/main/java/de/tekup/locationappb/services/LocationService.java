@@ -20,6 +20,7 @@ public class LocationService {
     private LocationRepository locationRepository;
     private UserRepository userRepository;
     private CarRepository carRepository;
+    private EmailSenderService emailSenderService;
 
     public Location addLocation(Location location){
         User user = userRepository.findById(location.getUser().getUsername()).get();
@@ -30,6 +31,13 @@ public class LocationService {
         location.setCar(car1);
         //calculate price
         location.setPrice(calculatePrice(location.getStartDate(), location.getEndDate(), location.getCar()));
+        location.setStatus("In progress");
+        try {
+            emailSenderService.sendmail(user.getUsername());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         return locationRepository.save(location);
     }
 
@@ -41,5 +49,14 @@ public class LocationService {
 
     public List<Location> getAllLocations(){
         return locationRepository.findAll();
+    }
+
+    public Location updateSatuts(Location location){
+        Location location1 = locationRepository.findById(location.getId()).get();
+        if(location1 != null){
+            location1.setStatus(location.getStatus());
+            return locationRepository.save(location1);
+        }
+        return null;
     }
 }
