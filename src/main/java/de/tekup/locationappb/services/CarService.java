@@ -4,8 +4,10 @@ package de.tekup.locationappb.services;
 import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.repositories.CarRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,8 +38,8 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public List<Car> getAllCars() {
-        return carRepository.findAll();
+    public List<Car> getAllCars(LocalDate startDate , LocalDate endDate) {
+        return carRepository.findAvailableCarsInDate(startDate,endDate);
     }
     public Car getCarById(int id){
         return carRepository

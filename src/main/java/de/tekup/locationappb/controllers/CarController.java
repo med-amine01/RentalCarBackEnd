@@ -6,10 +6,12 @@ import de.tekup.locationappb.entites.Car;
 import de.tekup.locationappb.services.CarService;
 import de.tekup.locationappb.services.EmailSenderService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -58,9 +60,13 @@ public class CarController {
     }
 
     @GetMapping("/allcars")
-    public List<Car> getAllCars(){
+    public List<Car> getAllCars(@Param("startDate") String startDate,
+                                @Param("endDate") String endDate){
 
-        return carService.getAllCars();
+        LocalDate d1 = LocalDate.parse(startDate);
+        LocalDate d2 = LocalDate.parse(endDate);
+
+        return carService.getAllCars(d1,d2);
     }
 
     @GetMapping("/{id}")
