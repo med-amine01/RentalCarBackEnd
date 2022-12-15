@@ -7,9 +7,9 @@ import de.tekup.locationappb.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import de.tekup.locationappb.config.WebSecurityConfiguration;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -60,7 +60,18 @@ public class UserService {
 
         return userRepository.save(user);
     }
+    public List<User> getUsers(){
+        Role role=roleRepository.findById("User").get();
+        return userRepository.findUserByRole(role);
+    }
+    public User getUserById(String id){
+        return userRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("User ID not Found"));
 
+    }
+    public void deleteUser(User user){
+         userRepository.delete(user);
+    }
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }

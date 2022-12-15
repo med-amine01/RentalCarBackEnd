@@ -1,16 +1,19 @@
 package de.tekup.locationappb.controllers;
 
+import de.tekup.locationappb.entites.Car;
+import de.tekup.locationappb.entites.Location;
+import de.tekup.locationappb.entites.Role;
 import de.tekup.locationappb.entites.User;
 import de.tekup.locationappb.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Controller
 public class UserController {
@@ -43,4 +46,24 @@ public class UserController {
         return "this is for user";
     }
 
+    @GetMapping("/allUsers")
+    @PreAuthorize("hasRole('Admin')")
+
+    @ResponseBody
+    public List<User> getUsers(){
+        return userService.getUsers();
+    }
+    @DeleteMapping("/deleteUser/{id}")
+    public boolean deleteUser(@PathVariable String id){
+        User user = userService.getUserById(id);
+        if(user != null){
+             for (Role role : user.getRole()) {
+                 user.getRole().remove(role);
+
+            }
+            userService.deleteUser(user);
+            return true;
+        }
+        return false;
+    }
 }
