@@ -59,4 +59,8 @@ public class LocationService {
         }
         return null;
     }
+    public List<Location> getlocationsbyClient(String id){
+        return locationRepository.findLocationsByUserUsername(id);
+    }
+
 }

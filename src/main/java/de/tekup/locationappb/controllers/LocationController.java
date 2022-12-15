@@ -29,4 +29,8 @@ public class LocationController {
     public List<Location> getLocations(){
         return locationService.getAllLocations();
     }
+    @GetMapping(value = "/UserLocations/{id}" )
+    public List<Location> getLocations(@PathVariable("id")String id){
+        return locationService.getlocationsbyClient(id);
+    }
 }
